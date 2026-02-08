@@ -670,6 +670,15 @@ img {
   margin-top: 1rem;
 }
 
+/* ===== Disqus Comments ===== */
+#disqus_thread {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+  margin-top: 2rem;
+}
+
 /* ===== Footer ===== */
 .footer {
   background: var(--bg-dark);
