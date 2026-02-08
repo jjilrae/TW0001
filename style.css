@@ -670,13 +670,212 @@ img {
   margin-top: 1rem;
 }
 
-/* ===== Disqus Comments ===== */
-#disqus_thread {
+/* ===== Comments ===== */
+.comment-form {
+  background: var(--warm-light);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  margin-top: 2rem;
+  border: 1px solid var(--gray-light);
+}
+
+.comment-input,
+.comment-textarea {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid var(--gray-light);
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--dark);
+  font-size: 0.95rem;
+  font-family: inherit;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.comment-input {
+  margin-bottom: 0.8rem;
+  max-width: 280px;
+}
+
+.comment-textarea {
+  height: 90px;
+  resize: none;
+}
+
+.comment-input::placeholder,
+.comment-textarea::placeholder {
+  color: var(--gray);
+}
+
+.comment-input:focus,
+.comment-textarea:focus {
+  border-color: var(--primary);
+}
+
+.comment-form-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0.8rem;
+}
+
+.comment-char-count {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.btn-comment {
+  padding: 0.6rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Comment List */
+.comment-list {
+  margin-top: 2rem;
+}
+
+.comment-loading {
+  text-align: center;
+  color: var(--gray);
+  padding: 2rem 0;
+  font-size: 0.95rem;
+}
+
+.comment-empty {
+  text-align: center;
+  color: var(--gray);
+  padding: 3rem 0;
+  font-size: 0.95rem;
+}
+
+/* Comment Card */
+.comment-card {
   background: var(--white);
   border-radius: var(--radius);
-  padding: 2rem;
-  box-shadow: var(--shadow-md);
-  margin-top: 2rem;
+  padding: 1.2rem 1.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--gray-light);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.comment-card:hover {
+  box-shadow: var(--shadow-sm);
+}
+
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.comment-nickname {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--dark);
+}
+
+.comment-time {
+  font-size: 0.8rem;
+  color: var(--gray);
+}
+
+.comment-time::before {
+  content: '\00b7';
+  margin-right: 0.5rem;
+}
+
+.comment-body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--dark-soft);
+  margin-bottom: 0.8rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.comment-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.comment-like-btn,
+.comment-reply-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--gray);
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.2rem 0.4rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.comment-like-btn:hover,
+.comment-reply-btn:hover {
+  color: var(--primary);
+  background: rgba(74,111,165,0.08);
+}
+
+.comment-like-btn.liked {
+  color: #E53E3E;
+}
+
+.comment-like-btn.liked:hover {
+  background: rgba(229,62,62,0.08);
+}
+
+/* Replies */
+.comment-replies {
+  margin-top: 0.8rem;
+  margin-left: 1.5rem;
+  padding-left: 1rem;
+  border-left: 2px solid var(--gray-light);
+}
+
+.comment-replies .comment-card {
+  background: var(--warm-light);
+  border-color: transparent;
+}
+
+/* Reply Form */
+.reply-form-wrap {
+  margin-top: 0.8rem;
+  padding-top: 0.8rem;
+  border-top: 1px solid var(--gray-light);
+}
+
+.reply-form {
+  display: flex;
+  gap: 0.6rem;
+  align-items: flex-start;
+}
+
+.reply-form .comment-input {
+  margin-bottom: 0;
+  max-width: 160px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.reply-form .comment-textarea {
+  height: 60px;
+  flex: 1;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+.reply-form .btn-comment {
+  padding: 0.5rem 1rem;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  align-self: flex-end;
 }
 
 /* ===== Footer ===== */
@@ -831,5 +1030,27 @@ img {
 
   .cta-title {
     font-size: 1.6rem;
+  }
+
+  .comment-input {
+    max-width: 100%;
+  }
+
+  .reply-form {
+    flex-wrap: wrap;
+  }
+
+  .reply-form .comment-input {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .reply-form .comment-textarea {
+    width: 100%;
+  }
+
+  .comment-replies {
+    margin-left: 0.8rem;
+    padding-left: 0.8rem;
   }
 }

@@ -250,25 +250,26 @@
     </div>
   </section>
 
-  <!-- Comments Section (Disqus) -->
+  <!-- Comments Section -->
   <section class="section section-light" id="comments">
     <div class="section-inner">
       <p class="section-label">커뮤니티</p>
       <h2 class="section-title">함께 나누는 이야기</h2>
-      <div id="disqus_thread"></div>
-      <script>
-        var disqus_config = function () {
-          this.page.url = PAGE_URL;
-          this.page.identifier = PAGE_IDENTIFIER;
-        };
-        (function() {
-          var d = document, s = d.createElement('script');
-          s.src = 'https://check-you.disqus.com/embed.js';
-          s.setAttribute('data-timestamp', +new Date());
-          (d.head || d.body).appendChild(s);
-        })();
-      </script>
-      <noscript>댓글을 보려면 JavaScript를 활성화해주세요. <a href="https://disqus.com/?ref_noscript">Disqus</a></noscript>
+
+      <!-- Comment Form -->
+      <form class="comment-form" id="comment-form">
+        <input type="text" class="comment-input" id="comment-nickname" placeholder="닉네임" maxlength="20" required>
+        <textarea class="comment-textarea" id="comment-content" placeholder="따뜻한 한마디를 남겨주세요..." maxlength="500" required></textarea>
+        <div class="comment-form-footer">
+          <span class="comment-char-count" id="comment-char-count">0 / 500</span>
+          <button type="submit" class="btn btn-primary btn-comment">댓글 작성</button>
+        </div>
+      </form>
+
+      <!-- Comment List -->
+      <div class="comment-list" id="comment-list">
+        <div class="comment-loading" id="comment-loading">댓글을 불러오는 중...</div>
+      </div>
     </div>
   </section>
 
