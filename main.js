@@ -39,14 +39,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   animTargets.forEach(el => observer.observe(el));
 
-  // --- CTA Form ---
+  // --- CTA Form (Formspree) ---
   const ctaForm = document.getElementById('cta-form');
   ctaForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
     const name = document.getElementById('form-name').value.trim();
     const phone = document.getElementById('form-phone').value.trim();
-    const message = document.getElementById('form-message').value.trim();
 
     if (!name || !phone) {
       alert('이름과 연락처를 입력해주세요.');
@@ -54,19 +53,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const btn = ctaForm.querySelector('.btn');
-    btn.textContent = '신청 완료!';
-    btn.style.background = '#48BB78';
-    btn.style.boxShadow = '0 4px 14px rgba(72,187,120,0.35)';
+    btn.textContent = '전송 중...';
     btn.disabled = true;
 
-    ctaForm.reset();
-
-    setTimeout(() => {
-      btn.textContent = '무료 갈등 진단 신청하기';
-      btn.style.background = '';
-      btn.style.boxShadow = '';
+    fetch(ctaForm.action, {
+      method: 'POST',
+      body: new FormData(ctaForm),
+      headers: { 'Accept': 'application/json' }
+    })
+    .then(response => {
+      if (response.ok) {
+        btn.textContent = '신청 완료!';
+        btn.style.background = '#48BB78';
+        btn.style.boxShadow = '0 4px 14px rgba(72,187,120,0.35)';
+        ctaForm.reset();
+        setTimeout(() => {
+          btn.textContent = '무료 갈등 진단 신청하기';
+          btn.style.background = '';
+          btn.style.boxShadow = '';
+          btn.disabled = false;
+        }, 3000);
+      } else {
+        throw new Error('전송 실패');
+      }
+    })
+    .catch(() => {
+      btn.textContent = '전송 실패 - 다시 시도해주세요';
+      btn.style.background = '#E53E3E';
       btn.disabled = false;
-    }, 3000);
+      setTimeout(() => {
+        btn.textContent = '무료 갈등 진단 신청하기';
+        btn.style.background = '';
+      }, 3000);
+    });
   });
 
   // --- Smooth scroll for anchor links ---
