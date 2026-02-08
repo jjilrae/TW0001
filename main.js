@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ===== Airtable Comments System =====
   const AIRTABLE_BASE_ID = 'appWWMgw7OWgsVMFc';
-  const AIRTABLE_PAT = 'patXi7Suau75nDx60.a7d566579ed2ba4405080e9508e04e0d4a2bab71dd28766bbc45fdd0dd65fbb2';
+  const AIRTABLE_PAT = 'patXi7Suau75nDx60.eead380cb6a99f73ce443b41cbd5e65556447544f309b4e0a0a87cd409800ae2';
   const AIRTABLE_TABLE = 'Comments';
   const AIRTABLE_URL = `https://api.airtable.com/v0/${AIRTABLE_BASE_ID}/${encodeURIComponent(AIRTABLE_TABLE)}`;
 
